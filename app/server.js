@@ -10,10 +10,7 @@ const db = require("./models/index");
 const Role = db.role;
 
 db.mongoose
-  .connect(process.env.MONGODB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URL)
   .then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
@@ -37,8 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name: "bezkoder-session",
-    keys: ["COOKIE_SECRET"], // should use as secret environment variable
+    name: "truyencaoviet-session",
+    keys: process.env.COOKIE_SECRET, // should use as secret environment variable
     httpOnly: true,
   })
 );

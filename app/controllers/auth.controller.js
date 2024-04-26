@@ -2,100 +2,117 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcryptjs");
 
-// Thêm hàm validation để kiểm tra dữ liệu đầu vào
-const validateUserData = (userData) => {
-  // Thực hiện kiểm tra dữ liệu ở đây, ví dụ:
-  if (!userData.username || !userData.email || !userData.password) {
-    throw new Error("Username, email, and password are required.");
-  }
-};
+exports.signup = (req, res) => {
+  const user = new User({
+    username: req.body.username,
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 8),
+  });
 
-exports.signup = async (req, res) => {
-  try {
-    // Validate dữ liệu đầu vào
-    validateUserData(req.body);
+  user.save((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
 
-    const user = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 8),
-    });
-
-    // Lưu người dùng vào cơ sở dữ liệu
-    await user.save();
-
-    let roles = ["user"]; // Mặc định là role user
-
-    // Nếu roles được cung cấp từ request, gán roles mới
     if (req.body.roles) {
-      const foundRoles = await Role.find({ name: { $in: req.body.roles } });
-      roles = foundRoles.map((role) => role.name);
+      Role.find(
+        {
+          name: { $in: req.body.roles },
+        },
+        (err, roles) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+
+          user.roles = roles.map((role) => role._id);
+          user.save((err) => {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+
+            res.send({ message: "User was registered successfully!" });
+          });
+        }
+      );
+    } else {
+      Role.findOne({ name: "user" }, (err, role) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        user.roles = [role._id];
+        user.save((err) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+
+          res.send({ message: "User was registered successfully!" });
+        });
+      });
     }
-
-    user.roles = roles;
-    await user.save();
-
-    res.status(201).send({ message: "User was registered successfully!" });
-  } catch (error) {
-    res
-      .status(400)
-      .send({ message: error.message || "Failed to register user." });
-  }
+  });
 };
 
-exports.signin = async (req, res) => {
-  try {
-    const user = await User.findOne({ username: req.body.username }).populate(
-      "roles",
-      "-__v"
-    );
+exports.signin = (req, res) => {
+  User.findOne({
+    username: req.body.username,
+  })
+    .populate("roles", "-__v")
+    .exec((err, user) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
 
-    if (!user) {
-      return res.status(404).send({ message: "User not found." });
-    }
+      if (!user) {
+        return res.status(404).send({ message: "User Not found." });
+      }
 
-    const passwordIsValid = bcrypt.compareSync(
-      req.body.password,
-      user.password
-    );
+      var passwordIsValid = bcrypt.compareSync(
+        req.body.password,
+        user.password
+      );
 
-    if (!passwordIsValid) {
-      return res.status(401).send({ message: "Invalid password!" });
-    }
+      if (!passwordIsValid) {
+        return res.status(401).send({ message: "Invalid Password!" });
+      }
 
-    const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
-      algorithm: "HS256",
-      expiresIn: 86400, // 24 hours
+      const token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
+        algorithm: "HS256",
+        allowInsecureKeySizes: true,
+        expiresIn: 86400, // 24 hours
+      });
+
+      var authorities = [];
+
+      for (let i = 0; i < user.roles.length; i++) {
+        authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
+      }
+
+      req.session.token = token;
+
+      res.status(200).send({
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        roles: authorities,
+      });
     });
-
-    const authorities = user.roles.map(
-      (role) => "ROLE_" + role.name.toUpperCase()
-    );
-
-    // Lưu token vào session
-    req.session.token = token;
-
-    res.status(200).send({
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      roles: authorities,
-      token: token,
-    });
-  } catch (error) {
-    res.status(500).send({ message: error.message || "Failed to sign in." });
-  }
 };
 
 exports.signout = async (req, res) => {
   try {
-    // Xóa token khỏi session khi đăng xuất
-    req.session.token = null;
-    res.status(200).send({ message: "You've been signed out!" });
-  } catch (error) {
-    res.status(500).send({ message: error.message || "Failed to sign out." });
+    req.session = null;
+    return res.status(200).send({ message: "You've been signed out!" });
+  } catch (err) {
+    this.next(err);
   }
 };
