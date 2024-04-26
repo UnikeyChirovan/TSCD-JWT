@@ -1,0 +1,7 @@
+xem toàn bộ: vw, vh
+display: flex -> các khối sẽ dồn lên
+(Display: flex và margin auto: combo để canh giữa 1 khối)
+flex-direction: hướng các phần tử trong khối ( sắp theo chiều dọc, chiều ngang...)
+tách lớp các khối: absolute - định vị trí theo khối lớn nhất bao ở ngoài
+relative: định vị theo phần tử cha nó
+dropdow: 1 khung có scroll

@@ -1,0 +1,7 @@
+npm i mongoose bcryptjs cors dotenv jsonwebtoken express body-parser cookie-parser --s
+npm install --save-dev nodemon (để server chạy mượt hơn, tự reload khi js thay đổi)
+npm run start --> chạy nodemon.
+import các gói đã cài đặt
+TK mongodb: hoanganh pass: hoanganh1234
+kết nối với mongodb
+cài redis npm install redis --save

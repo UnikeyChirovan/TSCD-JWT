@@ -1,0 +1,15 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+/app/node_modules
+.env
+/frontend/chapters
+/app/.env
+/frontend/CSS
+/frontend/contact_login
+/frontend/home_login
+/frontend/home_reading
+/frontend/JS

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../IMG/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../IMG/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../IMG/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Truyện Cáo Viết</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-success sticky-top">
+      <a class="navbar-brand" href="../Tac_gia/">
+        <img src="../IMG/creatorAI/logo.png" alt="" class="logo img-fluid" />
+      </a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active ml-3">
+            <a class="nav-link" href="../Home/"
+              ><i class="fa fa-home" aria-hidden="true"></i>Trang Chủ<span
+                class="sr-only"
+                >(current)</span
+              ></a
+            >
+          </li>
+          <li class="nav-item ml-3">
+            <a class="nav-link" href="../contact/"
+              ><i class="fa fa-phone-square" aria-hidden="true"></i>Liên Hệ</a
+            >
+          </li>
+          <li class="nav-item dropdown ml-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><i class="fa fa-list" aria-hidden="true"></i>Danh Sách Chương</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="../Chapters/1.txt" target="_blank"
+                >Chương 1</a
+              >
+              <a class="dropdown-item" href="../Chapters/2.txt" target="_blank"
+                >Chương 2</a
+              >
+            </div>
+          </li>
+          <li class="nav-item ml-3 setting">
+            <button
+              type="button"
+              id="setting"
+              class="btn btn-outline-light caidat"
+            >
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              Cài Đặt
+            </button>
+          </li>
+        </ul>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-outline-light btn-lg btn-lore mr-2"
+          data-toggle="modal"
+          data-target="#modelId"
+        >
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+          Đăng Ký
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="modelId"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="modelTitleId"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">ĐĂNG KÍ TÀI KHOẢN</h5>
+                <button
+                  type="button"
+                  class="close bg-danger"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span>Bạn đã có tài khoản?</span>
+                <a
+                  name=""
+                  id=""
+                  class="btn btn-outline-danger"
+                  href="#"
+                  role="button"
+                  >Đăng nhập ngay</a
+                >
+                <form>
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="nhập email"
+                      id="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="******"
+                      id="pwd"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Nhập lại Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="******"
+                      id="repwd"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Họ tên:</label>
+                    <input
+                      type="name"
+                      class="form-control"
+                      placeholder="nhập họ tên"
+                      id="name"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="name">Tên hiển thị: </label>
+                    <input
+                      type="name"
+                      class="form-control"
+                      placeholder="nhập tên bạn muốn hiển thị"
+                      id="nickname"
+                    />
+                  </div>
+                  <div class="form-group form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" />
+                      Remember me
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Đăng kí</button>
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-outline-light btn-lg btn-lore"
+          data-toggle="modal"
+          data-target="#login"
+        >
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+          Đăng Nhập
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="login"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="modelTitleId"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">ĐĂNG NHẬP TÀI KHOẢN</h5>
+                <button
+                  type="button"
+                  class="close bg-danger"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span>Bạn chưa có tài khoản?</span>
+                <a
+                  name=""
+                  id=""
+                  class="btn btn-outline-danger"
+                  href="#"
+                  role="button"
+                  >Đăng kí ngay</a
+                >
+                <form>
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="nhập email"
+                      id="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="******"
+                      id="pwd"
+                    />
+                  </div>
+                  <div class="form-group form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" />
+                      Remember me
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Đăng Nhập
+                  </button>
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid p-0 m-0">
+      <nav class="breadcrumb bcr p-0 m-0">
+        <a class="breadcrumb-item" href="../Home/">Về Trang Chủ</a>
+        <a class="breadcrumb-item" href="#"></a>
+        <span class="breadcrumb-item active">Tác Giả</span>
+      </nav>
+      <div class="row p-0 m-0">
+        <!-- Left-block -->
+        <div class="col-xl-3 col-md-6 col-sm-12 text-center poem index2">
+          <h2 class="text-primary">Thất Sắc Hành Ca</h2>
+          <p>Mây trôi nhẹ gió đưa hồn lữ thứ</p>
+          <p>Chân vội vàng cố níu giữ thời gian</p>
+          <p>Đêm dịu dàng lòng quạnh hiu xa xứ</p>
+          <p>Người lữ hành bước đi trong gian nan.</p>
+          <p>Bóng dáng ai bên thềm trăng soi tỏ</p>
+          <p>Đêm thanh tĩnh khúc ca vang đất lạ</p>
+          <p>Từ rừng xanh hành trình qua sóng gió</p>
+          <p>Phiêu lưu ký mở cõi bát ngát trời.</p>
+          <p>Vẫn lặng lẽ vầng nguyệt dương lang thang</p>
+          <p>Phiêu lưu cùng những giấc mộng đêm về</p>
+          <p>Màn đêm tối thì thầm những lời thề</p>
+          <p>Bình minh lên chạy đua với thời gian.</p>
+          <p>Vũ trụ rộng sao lấp lánh đêm đông</p>
+          <p>Ngân hà xa tỏa sắc màu huyền diệu</p>
+          <p>Hành tinh kia thương nhớ biết bao nhiêu</p>
+          <p>Ta lặng im ngắm trái đất quay vòng.</p>
+          <p>Rồi một ngày trời chợt đổ mưa dông</p>
+          <p>Gió lay động ma thuật xưa lại sống</p>
+          <p>Ta nhặt nhạnh từng sức mạnh tổ tông</p>
+          <p>Thất sắc chi đạo tựa thác đổ dòng.</p>
+          <p>Màu trắng tinh băng giá phủ lên đỉnh</p>
+          <p>Bạch quang sắc sao băng rơi không ngừng</p>
+          <p>Chắp tay lại nguyện cầu với thần linh</p>
+          <p>Phép thuật xưa trỗi dậy như đã từng.</p>
+          <p>Màu đỏ thắm thanh gươm lòng dũng cảm</p>
+          <p>Chém ác long hỏa chiến công lẫy lừng</p>
+          <p>Đầy kiêu ngạo rảy sạch máu quay lưng</p>
+          <p>Đời kiếm sĩ đời lãng du phiêu lãng!</p>
+          <p>Chàng và nàng giữa bao la sơn hải</p>
+          <p>Cùng nhau vẽ hạnh phúc của hai ta</p>
+          <p>Nàng đi mất tương lai không lời giải</p>
+          <p>Ôi chiến tranh tàn phá đi tất cả!</p>
+          <p>Ta vì nàng vì mảnh đất quê hương</p>
+          <p>Với khoa học hành trang là lý tưởng</p>
+          <p>Sự tham lam âm thanh cam bất bại</p>
+          <p>Vượt thời gian tìm kiếm những anh tài.</p>
+          <p>Từ đất đá bức tường vàng vững chắc</p>
+          <p>Bạn tiến lên tôi tấm khiên đáng tin</p>
+          <p>Từ Văn Lang gọi tôi hoàng kim sắc</p>
+          <p>Dẫu hơn thua tôi vẫn rất uy tín!</p>
+          <p>Từ rừng xanh đến kỉ nguyên thần thánh</p>
+          <p>Mang trọng trách một người bạn đồng hành</p>
+          <p>Không cá tính sức mạnh cũng mỏng manh</p>
+          <p>Yêu thiên nhiên yêu không khí trong lành.</p>
+          <p>Xanh như nước sắc xảo như mây trời</p>
+          <p>Mái tóc đen mềm mại như làn sương</p>
+          <p>Học cấm thư gương mặt em sáng ngời</p>
+          <p>Lam thuật sư cô gái vạn người thương</p>
+          <p>Ánh sáng xanh em giúp tôi chữa lành</p>
+          <p>Vết thương nào rồi cũng sẽ qua nhanh</p>
+          <p>Bao khó khăn có phàm ăn giúp sức</p>
+          <p>Cuộc chiến nào rồi cũng chấm dứt thôi.</p>
+          <p>Indigo ngọn lôi thương thức giấc</p>
+          <p>Celtic xưa phong lưu ai sánh bằng</p>
+          <p>Thầy tài giỏi học trò thêm xuất sắc</p>
+          <p>Ngày nằm ngủ đêm càng đánh càng hăng.</p>
+          <p>Thời thần thánh cuộc chiến dài bất tận</p>
+          <p>Bao sinh linh kẻ nước mất nhà tan</p>
+          <p>Cung và nước em đánh luôn cả Thần!</p>
+          <p>Tội làm biếng em hóa làm mỹ nhân.</p>
+          <p>Đen huyền bí tài năng và bản lĩnh</p>
+          <p>Đầy mạnh mẽ tự tin ở chính mình</p>
+          <p>Thật thông minh tự khám phá tất cả</p>
+          <p>Kiếm sĩ đen tự Darkin Tenka.</p>
+          <p>Mỗi màu sắc mỗi một chuyến phiêu lưu</p>
+          <p>Đỏ nóng tính thật thà là kiếm sĩ</p>
+          <p>Cam cầu toàn học giỏi khoa học gia</p>
+          <p>Vàng đầu bếp nơi hậu phương vững chắc</p>
+          <p>Lục quân sư thích làm những bài văn</p>
+          <p>Lam dịu dàng triết lý đầy sâu lắng</p>
+          <p>Chàm mèo tộc giấc mộng thênh thang trôi</p>
+          <p>Tím mộng mơ vương vấn hồn ca sĩ</p>
+          <p>Đen huyền bí hay ác quỷ giấu mình</p>
+          <p>Trắng tinh khôi thiên thần có phải không?</p>
+          <p>Phiêu lưu mãi hội bạn bè màu sắc</p>
+          <p>Vượt không thời đánh với hắc kiếm sư</p>
+          <p>Hội màu sắc tựa vì sao lấp lánh</p>
+          <p>Thật bao la huyền diệu đẹp tận cùng.</p>
+        </div>
+        <!-- Main-Block -->
+
+        <div class="col-xl-8 col-md-6 col-sm-12 p-0">
+          <!-- Background -->
+          <div class="imgbgr">
+            <img src="../IMG/creatorAI/test.jpg" alt="" class="img-fluid bgr" />
+          </div>
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Header -->
+              <div class="col-xl-4 col-md-5 col-sm-12 dautrang"></div>
+              <!-- Content -->
+              <div class="col-xl-8 col-md-7 col-sm-12 text-center infotg mt-2">
+                <h1 class="index2">Tiểu Sử</h1>
+                <img
+                  src="../IMG/creatorAI/gachchan.jpg"
+                  alt="gachchan"
+                  class="gachchan index2 img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right-block -->
+        <div
+          class="col-xl-1 col-md-6 col-sm-12 bookmark mt-3 p-0 text-center text-danger font-weight-bold"
+        >
+          <img
+            src="../IMG/favicon/android-icon-96x96.png"
+            alt=""
+            class="img-fluid avatar"
+          />
+          <p>Hoanganh Pham</p>
+          <img src="../IMG/creatorAI/gachchan.jpg" alt="" class="img-fluid" />
+          <!-- Carosel -->
+          <div class="row p-0 m-0">
+            <div class="col-xl-12 col-md-12 col-sm-12 p-0 m-0 mt-5">
+              <div id="carouselId" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li
+                    data-target="#carouselId"
+                    data-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li data-target="#carouselId" data-slide-to="1"></li>
+                  <li data-target="#carouselId" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <img
+                      src="../IMG/creatorAI/test.jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (1).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (10).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (18).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (27).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (35).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (38).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (45).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (47).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (50).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
+                <a
+                  class="carousel-control-prev"
+                  href="#carouselId"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a
+                  class="carousel-control-next"
+                  href="#carouselId"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <img
+                src="../IMG/creatorAI/gachchan.jpg"
+                alt=""
+                class="img-fluid mt-5"
+              />
+            </div>
+            <div class="col-xl-12 col-md-12 col-sm-12 p-0 m-0 mt-5">
+              <div id="carouselId1" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li
+                    data-target="#carouselId1"
+                    data-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li data-target="#carouselId1" data-slide-to="1"></li>
+                  <li data-target="#carouselId1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active">
+                    <img
+                      src="../IMG/creatorAI/1 (4).jpg"
+                      alt="First slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (14).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (15).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (30).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (32).jpg"
+                      alt=" slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (40).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (44).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (46).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/1 (52).jpg"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../IMG/creatorAI/logo.png"
+                      alt="Second slide"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
+                <a
+                  class="carousel-control-prev"
+                  href="#carouselId1"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a
+                  class="carousel-control-next"
+                  href="#carouselId1"
+                  role="button"
+                  data-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="contact">
+            <a href="http://colors.com">Selorson.com</a>
+          </div>
+        </div>
+        <!-- footer -->
+        <div class="col-xl-12 col-md-12 col-sm-12 p-0">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xl-12 col-md-12 col-sm-12 p-0">
+                <img
+                  src="../IMG/creatorAI/gachchan.jpg"
+                  alt="gachchan"
+                  class="gachchan img-fluid"
+                />
+              </div>
+              <div class="col-xl-8 col-md-8 col-sm-12 font-weight-bold">
+                <span style="color: red">Lưu ý: </span>
+                Website và truyện được sáng tạo bởi chính tác giả và có bản
+                quyền, hoan nghênh bạn đọc có thiện chí muốn giúp tác giả cải
+                thiện, xin hãy vui lòng liên hệ. Không sao chép và upload dưới
+                mọi hình thức!
+              </div>
+              <div class="col-xl-4 col-md-8 col-sm-12 text-center">
+                <h1 style="font-size: 3rem">Copyright © 2024 by TCV</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

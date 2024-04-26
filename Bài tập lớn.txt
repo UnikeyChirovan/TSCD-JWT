@@ -1,0 +1,69 @@
+Bài tập lớn:
+Xây dựng một trang web cá nhân. có chứa tất cả những gì đã học.
+-HTML - CSS - JavaScript
+HTML:
+- Thẻ h, p, b, u, i, a, img, ul, ol
+(MDN để đọc về các thẻ)
+- diffchecker.com để so sánh code
+- Thẻ br, hr
+- Emmet Cheat sheet để gõ tắt
+- trong thẻ a sử dụng target để mở trang mới hoặc trang hiện tại
+- thẻ img: unsplash.com
+sửa chiều rộng or dài để nhìn hình có tỉ lệ hợp lý
+Path: Đường dẫn
+/
+./
+../
+../../
+Github
+- Cách lưu dự án = git bash
+- Chia sẻ dự án:
+upload lên github --> setting-->pages-->banch-->main-->action-->lấy đường dẫn (public)
+VS Code và github
+- Vùng làm việc bash trong terminal
+- git init
+- theo dõi: git status
+- add vào: git add . or git add tên thư mục 
+- copy + paste code trên github (lưu tên, tạo nhánh, vị trí lưu, push...)
+Git Branch
+git branch -a
+git branch -c tên nhánhh
+git checkout tên nhánh
+git checkout -b tên nhánh
+git branch -d tên nhánh
+git branch -D tên nhánh (chưa push)
+git push -d origin tên nhánh (xóa trên git)
+git push -u origin tên nhánh
+Git Log
+kiếm tra chi tiết: Git log
+kiểm tra rút gọn: Git log --oneline
+dựa vào thông tin: xem code cũ: git checkout id
+copy code cũ: đổi tên, push
+
+
+HTML ENTITIES
+Các kí tự đặc biệt: @, Copyright...
+<pre>: để nguyên dạng
+thẻ <code>: codebeauty.org --> HTML escape để chuyển đổi
+
+HTML Table
+th, td, tr, thead, tbody, tfoot
+colspan và rowspan
+
+
+CSS
+Inline - Internal - External
+Opacity - Display: None - Visibility
+Favicon: tạo hình ảnh nhỏ trên tab trình duyệt
+Prefix: một số thuộc tính không được hỗ trợ nếu không thêm vào prefix 
+Selector: .class , #id, *, element .class, element,element , .class.class , element,.class
+Nếu 2 thuộc tính cạnh nhau, có khoảng trắng: or, không khoảng trắng: and.
+div p và div > p: 
++ và dấu ngã
+
+
+
+
+
+
+
